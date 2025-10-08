@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Methods</title>
+    <script>
+        // creating a date
+        let currentDateTime = new Date();
+        let now2 = Date.now();
+        let stringDate = new Date("Sat Jun 05 2021 12:40:12 GMT+0200");
+        
+
+
+        console.log("The date and time in timestamp is: ", currentDateTime);
+        console.log("The date and time in timestamp is: ", now2);
+        console.log("Formated date and time", stringDate);
+
+
+        let d = new Date();
+        console.log("Day of week:", d.getDay());
+        console.log("Day of month:", d.getDate());
+        console.log("Month:", d.getMonth());
+        console.log("Year:", d.getFullYear());
+        console.log("Seconds:", d.getSeconds());
+        console.log("Milliseconds:", d.getMilliseconds());
+        console.log("Time:", d.getTime());
+
+    </script>
+</head>
+<body>
+    <h1>Working With Dates in Javascript</h1>
+
+
+</body>
+</html>

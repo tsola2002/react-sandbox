@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax API CALL</title>
+    <style>
+        .country {
+        max-width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .country__img {
+        width: 100%;
+        border-radius: 6px;
+        }
+        .country__data {
+        margin-top: 1rem;
+        }
+        .country__row {
+        margin: 0.3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>AJAX API CALL</h1>
+
+    <div id="countriesContainer">
+
+    </div>
+    <script>
+        // create XMLHttpRequest Object
+        let request = new XMLHttpRequest();
+
+        //OPEN THE REQUEST
+        request.open('GET', 'https://restcountries.com/v3.1/name/nigeria');
+
+        // SEND THE REQUEST
+        data = request.send();
+        
+
+        //REGISTER A CALLBACK ON THE REQUEST OBJECT FOR THE LOAD EVENT
+        request.addEventListener('load', function(){
+            // console.log("PRE-RESPONSE DATA", this.responseText);
+
+            // JSON DATA TO JAVASCRIPT OBJECT DESTRUCTURE THE OBJECT
+            // DESTRUCTURING WILL EXTRACT THE OBJECT FROM THE PROPERTY
+            let [data] = JSON.parse(this.responseText);
+            console.log("CONVERTED JSON FORMAT", data);
+
+            const flag = data.flags.png;
+            const name = data.name.common;
+            const region = data.region;
+            const population = data.population.toLocaleString();
+            const language = Object.values(data.languages)[0];
+            const currency = Object.values(data.currencies)[0].name;
+
+             // ✅ Fill template with real data
+        let html = `        
+                <article class="country">
+                <img class="country__img" src="${flag}" alt="Flag of ${name}" />
+                <div class="country__data">
+                    <h3 class="country__name">${name}</h3>
+                    <h4 class="country__region">${region}</h4>
+                    <p class="country__row"><span>👫</span>${population} people</p>
+                    <p class="country__row"><span>🗣️</span>${language}</p>
+                    <p class="country__row"><span>💰</span>${currency}</p>
+                </div>
+                </article>
+            `;
+
+        let countriesContainer = document.getElementById("countriesContainer");
+        countriesContainer.insertAdjacentHTML('beforeend', html);
+
+
+        });
+    </script>
+</body>
+</html>

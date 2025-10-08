@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Variables</title>
+    <script>
+        const name = "Pedro";
+        const age = 20;
+
+        const person = {
+            name,
+            age,
+            isMarried: false
+        };
+
+        console.log(person);
+
+        const person2 = {...person, name: "Shola"};
+
+        console.log(person2);
+    </script>
+</head>
+<body>
+    <h1>Object variables</h1>
+</body>
+</html>

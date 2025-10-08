@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetchapi API CALL</title>
+    <style>
+        .country {
+        max-width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .country__img {
+        width: 100%;
+        border-radius: 6px;
+        }
+        .country__data {
+        margin-top: 1rem;
+        }
+        .country__row {
+        margin: 0.3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>FETCHAPI API CALL</h1>
+    <div id="countriesContainer">
+    </div>
+    <script>
+
+        // THIS WILL RETRIEVE INFORMATION FROM THE API
+        const getCountryData = function (country) {
+            fetch(`https://restcountries.com/v3.1/name/${country}`)
+                .then(response => response.json())
+                // .then(data => console.log(data))
+                .then(data => renderCountry(data[0]));
+        }
+
+        // THIS WILL LIST API INFORMATION ON THE WEBPAGE
+        const renderCountry = function (countryData) {
+                // SETUP API DATA
+                const flag = countryData.flags.png;
+                const name = countryData.name.common;
+                const region = countryData.region;
+                const population = countryData.population.toLocaleString();
+                const language = Object.values(countryData.languages)[0];
+                const currency = Object.values(countryData.currencies)[0].name;
+
+                let html = `        
+                <article class="country">
+                <img class="country__img" src="${flag}" alt="Flag of ${name}" />
+                <div class="country__data">
+                    <h3 class="country__name">${name}</h3>
+                    <h4 class="country__region">${region}</h4>
+                    <p class="country__row"><span>👫</span>${population} people</p>
+                    <p class="country__row"><span>🗣️</span>${language}</p>
+                    <p class="country__row"><span>💰</span>${currency}</p>
+                </div>
+                </article>
+            `;
+
+            let countriesContainer = document.getElementById("countriesContainer");
+            countriesContainer.insertAdjacentHTML('beforeend', html);
+        }
+
+        getCountryData('portugal');
+    </script>
+</body>
+</html>

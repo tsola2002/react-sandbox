@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Filters</title>
+    <script>
+        // defining our array
+        let arr = ["squirrel", 5, "Tjed", new Date(), true];
+
+        // defining our function
+        function checkString(element, index) {
+            return typeof element === "string";
+        }
+
+        // running every element of our array through a filter
+        let filterArr = arr.filter(checkString);
+
+        // print the results of the filtered array
+        console.log(filterArr);
+    </script>
+</head>
+<body>
+    <h1>Working with Array Filters</h1>
+</body>
+</html>
