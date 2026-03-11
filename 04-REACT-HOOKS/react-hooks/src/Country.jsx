@@ -35,10 +35,9 @@ function Country() {
                 setLoading(false);
             })
             .catch(error => {
-                setError(error.messgae);
+                setError(error.message);
                 setLoading(false);
-            });
-            
+            });           
         }, [countryName]);
 
         if(loading){
