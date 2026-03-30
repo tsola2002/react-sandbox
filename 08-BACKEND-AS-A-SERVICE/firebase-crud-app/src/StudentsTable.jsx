@@ -1,4 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import {
+  Box,
+  Button,
+  TextField,
+  Stack
+} from "@mui/material";
+import {
+  DataGrid,
+  GridActionsCellItem
+} from "@mui/x-data-grid";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc
+} from "firebase/firestore";
+import { db } from "./firebase";
 
 
 
@@ -54,7 +73,20 @@ function StudentsTable() {
 
 
   return (
-    <div>StudentsTable</div>
+    <Box p={3}>
+      {/* 🔹 DATA TABLE */}
+      <DataGrid
+        rows={students}
+        columns={columns}
+        autoHeight
+        pageSizeOptions={[5, 10]}
+        processRowUpdate={(updatedRow) => {
+          handleUpdate(updatedRow.id, updatedRow);
+          return updatedRow;
+        }}
+        experimentalFeatures={{ newEditingApi: true }}
+      />
+    </Box>
   )
 }
 
