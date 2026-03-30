@@ -9,6 +9,7 @@ import {
   DataGrid,
   GridActionsCellItem
 } from "@mui/x-data-grid";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   collection,
   getDocs,
