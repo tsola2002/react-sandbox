@@ -8,6 +8,7 @@ import { routes } from './routes';
 import Dashboard from './Dashboard';
 import Settings from './Settings';
 import Users from './Users';
+import { Product } from './Product';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/products/:id" element={<Product />} />
 
         {/* Parent Route */}
         <Route path="/dashboard" element={<Dashboard />}>

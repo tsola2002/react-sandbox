@@ -5,22 +5,19 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import './App.css'
+import Button from '@mui/material/Button';
 
 function App() {
 
 
   return (
     <>
-    <CssBaseline />
-      <Container fixed>
+      <h1>Material Design Web Page</h1>
+      <Button variant="contained">Hello world</Button> 
+
+      <h2>Container Layout</h2>  
+      <Container maxWidth="sm">
         <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} />
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <h1>Vite + React + Shola</h1> 
       </Container>
     </>
   )
