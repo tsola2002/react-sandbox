@@ -4,20 +4,15 @@ import Login from './Login';
 import MainPage from './MainPage';
 import Navbar from './Navbar';
 import "./App.css";
+import StudentsTable from './StudentsTable';
 
 
 
 function App() {
   return (
-    <div className='App'>  
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path='/' element={ <MainPage /> } />
-                <Route path='/login' element={ <Login /> } />
-            </Routes>
-        </Router>
-    </div>
+    <>
+      <StudentsTable/>
+    </>
   );
 }
 
