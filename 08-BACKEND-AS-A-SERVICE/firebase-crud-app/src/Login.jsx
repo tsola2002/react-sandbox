@@ -5,7 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
-
+  const handleLogin = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 
   return (
