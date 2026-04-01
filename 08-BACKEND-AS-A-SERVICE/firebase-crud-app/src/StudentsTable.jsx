@@ -75,6 +75,27 @@ function StudentsTable() {
 
   return (
     <Box p={3}>
+      {/* 🔹 CREATE FORM */}
+      <Stack direction="row" spacing={2} mb={2}>
+        <TextField 
+          label="Name"
+          value={newStudent.name}
+          onChange={(e) =>
+            setNewStudent({ ...newStudent, name: e.target.value})
+          }
+        />
+        <TextField 
+          label="Email"
+          value={newStudent.email}
+          onChange={(e) =>
+            setNewStudent({ ...newStudent, email: e.target.value})
+          }
+        />
+        <Button variant="contained" onClick={handleAdd}>
+          Add Student
+        </Button>
+      </Stack>
+
       {/* 🔹 DATA TABLE */}
       <DataGrid
         rows={students}
