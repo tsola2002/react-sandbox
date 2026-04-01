@@ -39,8 +39,8 @@ const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
 //Auth Helpers
-// const signInWithGoogle = () => signInWithPopup(auth, provider);
-// const signOutUser = () => signOut(auth);
+const signInWithGoogle = () => signInWithPopup(auth, provider);
+const signOutUser = () => signOut(auth);
 
 // Firestore Helpers
 const postsCollection = collection(db, "posts");
