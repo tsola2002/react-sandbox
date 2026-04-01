@@ -40,6 +40,15 @@ function StudentsTable() {
         setStudents(data);
     };
 
+    // 🔹 CREATE: Add a new student
+    const handleAdd = async () => {
+      if (!newStudent.name || !newStudent.email) return;
+
+      await addDoc(collection(db, "students"), newStudent);
+      setNewStudent({ name: "", email: ""});
+      fetchStudents();
+    };
+
 
     useEffect(() => {
         fetchStudents();
