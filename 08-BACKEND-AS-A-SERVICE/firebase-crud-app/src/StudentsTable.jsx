@@ -18,7 +18,8 @@ import {
   doc,
   updateDoc
 } from "firebase/firestore";
-import { db } from "./firebase";
+import { auth, db } from "./firebase";
+import { signOut } from 'firebase/auth';
 
 
 
@@ -64,6 +65,11 @@ function StudentsTable() {
     const handleDelete = async (id) => {
       await deleteDoc(doc(db, "students", id));
       fetchStudents();
+    };
+
+    // 🔹 LOGOUT: Logout a user via google
+    const handleLogout = async () => {
+      await signOut(auth);
     };
 
     useEffect(() => {
@@ -133,6 +139,9 @@ function StudentsTable() {
         }}
         experimentalFeatures={{ newEditingApi: true }}
       />
+      <Button variant="outlined" onClick={handleLogout} sx={{ mb: 2 }}>
+        Logout
+      </Button>
     </Box>
   )
 }
