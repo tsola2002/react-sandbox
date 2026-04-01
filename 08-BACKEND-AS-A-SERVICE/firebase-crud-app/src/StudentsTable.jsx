@@ -49,6 +49,22 @@ function StudentsTable() {
       fetchStudents();
     };
 
+    // 🔹 UPDATE: Inline edit of a student record
+    const handleUpdate = async (id, updatedRow) => {
+      // retrieve student record to be edited
+      const ref = doc(db, "students", id);
+      // update the student record with new values from the form
+      await updateDoc(ref, {
+        name: updatedRow.name,
+        email: updatedRow.email
+      });
+    };
+
+    // 🔹 DELETE: delete a student record
+    const handleDelete = async (id) => {
+      await deleteDoc(doc(db, "students", id));
+      fetchStudents();
+    };
 
     useEffect(() => {
         fetchStudents();
