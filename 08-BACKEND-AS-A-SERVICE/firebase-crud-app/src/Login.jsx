@@ -5,20 +5,19 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
-  // variable for navigation library
-  const navigate = useNavigate();
 
-  const signInWithGoogle = () => {
-    const result = signInWithPopup(auth, provider);
-    // console.log(result);
-    navigate("/"); 
-  }
+
 
   return (
-    <div>
-      <p>Sign In With Google</p>
-      <button onClick={signInWithGoogle}>Sign In With Google</button>
-    </div>  
+    <Container style={{ textAlign: "center", marginTop: "100px" }}>
+      <Typography variant="h5" mb={2}>
+        Sign in to continue
+      </Typography>
+
+      <Button variant="contained" onClick={handleLogin}>
+        Sign in with Google
+      </Button>
+    </Container>
   );
 }
 

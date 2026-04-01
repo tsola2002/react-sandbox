@@ -30,13 +30,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// 🔐 Auth setup
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+
+// const auth = getAuth(app);
+//const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
 //Auth Helpers
-const signInWithGoogle = () => signInWithPopup(auth, provider);
-const signOutUser = () => signOut(auth);
+// const signInWithGoogle = () => signInWithPopup(auth, provider);
+// const signOutUser = () => signOut(auth);
 
 // Firestore Helpers
 const postsCollection = collection(db, "posts");
