@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // THIS USEEFFECT WILL CHECK IF A USERS CURRENT LOGGEDIN STATE
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -24,15 +25,12 @@ function App() {
     return () => unsubscribe();
   }, []);
 
+  // IF USER IS NOT LOGGEDIN SHOW THE LOADIG TEXT
   if (loading) return <p>Loading...</p>;
 
+  // IF USER IS LOGGED IN RENDER THE DATA TABLE IF NOT DISPLAY THE LOGIN COMPONENT
   return user ? <StudentsTable /> : <Login />
 
-  // return (
-  //   <>
-  //     <StudentsTable/>
-  //   </>
-  // );
 }
 
 export default App
